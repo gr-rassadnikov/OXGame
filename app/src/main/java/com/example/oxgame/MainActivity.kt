@@ -2,10 +2,8 @@ package com.example.oxgame
 
 import android.graphics.Color
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-
 import com.example.oxgame.game.Board
 import com.example.oxgame.game.GameResult
 import com.example.oxgame.game.MNKPlayers.HumanPlayer
@@ -45,9 +43,9 @@ class TwoPlayerGame(
 private enum class Symbol {
     O, X, E
 }
+
 val colorO = Color.RED
 val colorX = Color.BLUE
-
 
 
 private fun getNextMove(symbol: Symbol): Symbol {
@@ -61,8 +59,10 @@ private class DataResult() {
 }
 
 private class ButtonsControl(
-    val n: Int = 0,
-    val b: List<Button>,
+    val m: Int = 3,
+    val n: Int = 3,
+    val k: Int = 3,
+    val listButton: List<Button>,
     var game: TwoPlayerGame,
     val textViewResult: TextView,
     val textViewProcess: TextView,
@@ -70,7 +70,8 @@ private class ButtonsControl(
     val textViewCntX: TextView,
 
     ) {
-    private var used: MutableList<Boolean> = MutableList(n) { i -> false }
+    private val size = listButton.size
+    private var used: MutableList<Boolean> = MutableList(size) { i -> false }
     private var move: Symbol = Symbol.X
     private var firstMove: Symbol = Symbol.X
     private var dataResult = DataResult()
@@ -78,10 +79,10 @@ private class ButtonsControl(
 
     fun click(number: Int) {
         if (!used[number]) {
-            showButtonBoard(b[number], move)
+            showButtonBoard(listButton[number], move)
             val result = game.makeMove(
                 if (move == Symbol.X) game.player1 else game.player2,
-                if (move == Symbol.X) 1 else 2, true, number / 3, number % 3
+                if (move == Symbol.X) 1 else 2, true, number / n, number % n
             )
             when (result) {
                 1 -> {
@@ -105,8 +106,8 @@ private class ButtonsControl(
         move = Symbol.X
         firstMove = move
         dataResult = DataResult()
-        used = MutableList(n) { i -> false }
-        for (button in b) {
+        used = MutableList(size) { i -> false }
+        for (button in listButton) {
             showButtonBoard(button, Symbol.E)
         }
         showTextViewResult(textViewResult, -1, move)
@@ -114,7 +115,7 @@ private class ButtonsControl(
         showTextViewCnt(textViewCntO, 0)
         showTextViewCnt(textViewCntX, 0)
         game = TwoPlayerGame(
-            TicTacToeBoard(3, 3, 3), HumanPlayer(), HumanPlayer()
+            TicTacToeBoard(m, n, k), HumanPlayer(), HumanPlayer()
         )
     }
 
@@ -122,14 +123,14 @@ private class ButtonsControl(
         dataResult.cnt++
         move = if (dataResult.cnt % 2 == 0) Symbol.X else Symbol.O
         firstMove = move
-        used = MutableList(n) { i -> false }
-        for (button in b) {
+        used = MutableList(size) { i -> false }
+        for (button in listButton) {
             showButtonBoard(button, Symbol.E)
         }
         showTextViewResult(textViewResult, -1, move)
         showTextViewProcess(textViewProcess, -1, move)
         game = TwoPlayerGame(
-            TicTacToeBoard(3, 3, 3), HumanPlayer(), HumanPlayer()
+            TicTacToeBoard(m, n, k), HumanPlayer(), HumanPlayer()
         )
     }
 
@@ -199,20 +200,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val n = 9
-        val board = TicTacToeBoard(3, 3, 3)
+        val m = 3
+        val n = 4
+        val k = 3
+        val size = m * n
+        val board = TicTacToeBoard(m, n, k)
 
-
-        val button1: Button = findViewById(R.id.button1)
-        val button2: Button = findViewById(R.id.button2)
-        val button3: Button = findViewById(R.id.button3)
-        val button4: Button = findViewById(R.id.button4)
-        val button5: Button = findViewById(R.id.button5)
-        val button6: Button = findViewById(R.id.button6)
-        val button7: Button = findViewById(R.id.button7)
-        val button8: Button = findViewById(R.id.button8)
-        val button9: Button = findViewById(R.id.button9)
-
+        val tableView: TableLayout = findViewById(R.id.listButton)
         val textViewResult: TextView = findViewById(R.id.textViewResult)
         val buttonRestart: Button = findViewById(R.id.buttonRestart)
         val buttonNextRound: Button = findViewById(R.id.buttonNextRound)
@@ -222,58 +216,51 @@ class MainActivity : AppCompatActivity() {
         val textViewCntHeadX: TextView = findViewById(R.id.textViewCntHeadX)
         val textViewProcess: TextView = findViewById(R.id.textViewProcess)
 
-        var buttonsControl: ButtonsControl = ButtonsControl(
-            n,
-            listOf(
-                button1, button2, button3,
-                button4, button5, button6,
-                button7, button8, button9
-            ),
+        val listButton: MutableList<Button> = mutableListOf()
+
+        val forRow = TableRow.LayoutParams(
+            TableRow.LayoutParams.WRAP_CONTENT,
+            TableRow.LayoutParams.WRAP_CONTENT
+        )
+        val forTable: LinearLayout.LayoutParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.FILL_PARENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
+        for (i in 0 until m) {
+            val newRow: TableRow = TableRow(this)
+            for (j in 0 until n) {
+                val newButton: Button = Button(this)
+                newButton.setLayoutParams(forRow)
+                newRow.addView(newButton)
+                listButton.add(newButton)
+            }
+            newRow.setLayoutParams(forTable)
+            tableView.addView(newRow)
+        }
+
+
+        val buttonsControl: ButtonsControl = ButtonsControl(
+            m, n, k,
+            listButton,
             TwoPlayerGame(board, HumanPlayer(), HumanPlayer()),
             textViewResult,
             textViewProcess,
             textViewCntO,
             textViewCntX,
         )
+
+
         buttonRestart.setOnClickListener {
             buttonsControl.restart()
         }
         buttonNextRound.setOnClickListener {
             buttonsControl.nextRound()
         }
-//        var number = 0
-//
-//        for (button in buttonsControl.b) {
-//            button.setOnClickListener {
-//                buttonsControl.click(number++)
-//            }
-//        }
-        button1.setOnClickListener {
-            buttonsControl.click(0)
-        }
-        button2.setOnClickListener {
-            buttonsControl.click(1)
-        }
-        button3.setOnClickListener {
-            buttonsControl.click(2)
-        }
-        button4.setOnClickListener {
-            buttonsControl.click(3)
-        }
-        button5.setOnClickListener {
-            buttonsControl.click(4)
-        }
-        button6.setOnClickListener {
-            buttonsControl.click(5)
-        }
-        button7.setOnClickListener {
-            buttonsControl.click(6)
-        }
-        button8.setOnClickListener {
-            buttonsControl.click(7)
-        }
-        button9.setOnClickListener {
-            buttonsControl.click(8)
+
+        for (number in 0 until size) {
+            buttonsControl.listButton[number].setOnClickListener {
+                buttonsControl.click(number)
+            }
         }
     }
 }
