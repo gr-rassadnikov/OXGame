@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">OXGame</string>
+    <string name="HeadX">X</string>
+    <string name="HeadO">O</string>
+    <string name="zero">0</string>
+</resources>

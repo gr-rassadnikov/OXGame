@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="buttonBoardStart">
+        <item name="android:layout_width">90dp</item>
+        <item name="android:layout_height">90dp</item>
+        <item name="android:backgroundTint">@color/colorButtonBoard</item>
+        <item name="android:textSize">40dp</item>
+    </style>
+
+    <style name="buttonBoardO">
+        <item name="android:layout_width">90dp</item>
+        <item name="android:layout_height">90dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:text">O</item>
+        <item name="android:colorAccent">@color/colorButtonBoardO</item>
+    </style>
+
+    <style name="buttonBoardX">
+        <item name="android:layout_width">90dp</item>
+        <item name="android:layout_height">90dp</item>
+        <item name="android:textColor">@color/teal_200</item>
+        <item name="android:text">X</item>
+        <item name="android:colorAccent">@color/colorButtonBoardX</item>
+
+    </style>
+
+    <style name="buttonRestart">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:text">Restart</item>
+        <item name="android:textSize">10dp</item>
+        <item name="android:backgroundTint">@color/colorButtonMenu</item>
+    </style>
+
+    <style name="textViewResult">
+        <item name="android:layout_width">140dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="buttonNextRound">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:text">Next Round</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">10dp</item>
+        <item name="android:backgroundTint">@color/colorButtonMenu</item>
+    </style>
+
+    <style name="textViewProcess">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:textSize">40dp</item>
+
+    </style>
+
+    <style name="textViewCntHead">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:textSize">30dp</item>
+
+    </style>
+
+    <style name="textViewCnt">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:textColor">@color/teal_200</item>
+        <item name="android:textSize">20dp</item>
+
+    </style>
+</resources>
