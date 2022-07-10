@@ -195,14 +195,17 @@ private class ButtonsControl(
     }
 }
 
+var widthBoard = 940
+var heightBoard = 940
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val m = 3
-        val n = 4
-        val k = 3
+        val m = 7
+        val n = 7
+        val k = 4
         val size = m * n
         val board = TicTacToeBoard(m, n, k)
 
@@ -220,17 +223,21 @@ class MainActivity : AppCompatActivity() {
 
         val forRow = TableRow.LayoutParams(
             TableRow.LayoutParams.WRAP_CONTENT,
-            TableRow.LayoutParams.WRAP_CONTENT
+            TableRow.LayoutParams.MATCH_PARENT
         )
         val forTable: LinearLayout.LayoutParams = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.FILL_PARENT,
-            LinearLayout.LayoutParams.WRAP_CONTENT
+            LinearLayout.LayoutParams.MATCH_PARENT
         )
         for (i in 0 until m) {
             val newRow: TableRow = TableRow(this)
             for (j in 0 until n) {
                 val newButton: Button = Button(this)
+                forRow.width = widthBoard / n
+                forRow.height = heightBoard / m
                 newButton.setLayoutParams(forRow)
+//                newRow.backgroundTintMode = color
+                newButton.textSize = ((widthBoard / n)/5).toFloat()
                 newRow.addView(newButton)
                 listButton.add(newButton)
             }
