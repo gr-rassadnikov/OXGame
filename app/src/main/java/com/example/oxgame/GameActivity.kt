@@ -195,8 +195,8 @@ private class ButtonsControl(
     }
 }
 
-var widthBoard = 940
-var heightBoard = 940
+var widthBoard = 1020
+var heightBoard = 1020
 
 
 class GameActivity : StartActivity() {

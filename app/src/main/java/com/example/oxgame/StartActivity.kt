@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 
@@ -28,6 +29,7 @@ open class StartActivity : AppCompatActivity() {
         val SettingsButton2_6: Button = findViewById(R.id.buttonSettings2_6)
         val SettingsButton2_7: Button = findViewById(R.id.buttonSettings2_7)
 
+        val textStartError: TextView = findViewById(R.id.textStartError)
         val buttonStart: Button = findViewById(R.id.buttonStart)
         val listSettingsButton1: MutableList<Button> = mutableListOf(
             SettingsButton1_2,
@@ -47,6 +49,7 @@ open class StartActivity : AppCompatActivity() {
         )
         for (number in 0 until listSettingsButton1.size) {
             listSettingsButton1[number].setOnClickListener {
+                listSettingsButton1[n - 1].setBackgroundColor(Color.GREEN)
                 listSettingsButton1[number].setBackgroundColor(Color.RED)
                 n = number + 1
                 m = number + 1
@@ -55,11 +58,18 @@ open class StartActivity : AppCompatActivity() {
 
         for (number in 0 until listSettingsButton2.size) {
             listSettingsButton2[number].setOnClickListener {
+                listSettingsButton2[k - 1].setBackgroundColor(Color.GREEN)
+                textStartError.setText("")
                 listSettingsButton2[number].setBackgroundColor(Color.RED)
                 k = number + 1
+                if (k > n || k > m) {
+                    listSettingsButton2[number].setBackgroundColor(Color.GREEN)
+                    textStartError.setText("Please, choose size for Win Line smaller")
+                }
             }
         }
         buttonStart.setOnClickListener {
+            textStartError.setText("")
             val intent = Intent(this, GameActivity::class.java)
             intent.putExtra("m", m + 1)
             intent.putExtra("n", n + 1)

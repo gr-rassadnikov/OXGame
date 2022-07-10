@@ -49,12 +49,7 @@
         <item name="android:backgroundTint">@color/colorButtonMenu</item>
     </style>
 
-    <style name="textViewProcess">
-        <item name="android:layout_width">60dp</item>
-        <item name="android:layout_height">60dp</item>
-        <item name="android:textSize">40dp</item>
 
-    </style>
 
     <style name="textViewCntHead">
         <item name="android:layout_width">40dp</item>
@@ -63,11 +58,5 @@
 
     </style>
 
-    <style name="textViewCnt">
-        <item name="android:layout_width">40dp</item>
-        <item name="android:layout_height">40dp</item>
-        <item name="android:textColor">@color/teal_200</item>
-        <item name="android:textSize">20dp</item>
 
-    </style>
 </resources>

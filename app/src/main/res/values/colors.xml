@@ -10,7 +10,7 @@
     <color name="colorButtonBoard">#FF75DCD2</color>
     <color name="colorButtonBoardO">#F44336</color>
     <color name="colorButtonBoardX">#ff0000ff</color>
-    <color name="colorButtonMenu">#4CAF50</color>
+    <color name="colorButtonMenu">#00FF00</color>
     <color name="color_text1">#1F8ABA</color>
     <color name="colorButtonMenuText">#FFFFFFFF</color>
 </resources>
