@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="@color/colorButtonBoard"
-    tools:context=".MainActivity">
+    tools:context=".StartActivity">
 
     <TableLayout
         android:id="@+id/listButton"
@@ -19,77 +19,6 @@
         android:orientation="horizontal"
         ></TableLayout>
 
-<!--    <Button-->
-<!--        android:id="@+id/button1"-->
-<!--        style="@style/buttonBoardStart"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        android:layout_marginTop="100dp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/button2"-->
-<!--        style="@style/buttonBoardStart"-->
-<!--        android:layout_marginStart="135dp"-->
-<!--        android:layout_marginTop="100dp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/button3"-->
-<!--        style="@style/buttonBoardStart"-->
-<!--        android:layout_marginStart="250dp"-->
-<!--        android:layout_marginTop="100dp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/button4"-->
-<!--        style="@style/buttonBoardStart"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        android:layout_marginTop="215dp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/button5"-->
-<!--        style="@style/buttonBoardStart"-->
-<!--        android:layout_marginStart="135dp"-->
-<!--        android:layout_marginTop="215dp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/button6"-->
-<!--        style="@style/buttonBoardStart"-->
-<!--        android:layout_marginStart="250dp"-->
-<!--        android:layout_marginTop="215dp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/button7"-->
-<!--        style="@style/buttonBoardStart"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        android:layout_marginTop="330dp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/button8"-->
-<!--        style="@style/buttonBoardStart"-->
-<!--        android:layout_marginStart="135dp"-->
-<!--        android:layout_marginTop="330dp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/button9"-->
-<!--        style="@style/buttonBoardStart"-->
-<!--        android:layout_marginStart="250dp"-->
-<!--        android:layout_marginTop="330dp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <TextView
         android:id="@+id/textViewResult"
@@ -105,7 +34,7 @@
         style="@style/buttonRestart"
         android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
-
+        android:textColor="@color/colorButtonMenuText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -114,6 +43,7 @@
         style="@style/buttonNextRound"
         android:layout_marginStart="140dp"
         android:layout_marginTop="30dp"
+        android:textColor="@color/colorButtonMenuText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

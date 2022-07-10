@@ -199,13 +199,15 @@ var widthBoard = 940
 var heightBoard = 940
 
 
-class MainActivity : AppCompatActivity() {
+class GameActivity : StartActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val m = 7
-        val n = 7
-        val k = 4
+        setContentView(R.layout.activity_game)
+
+         val m = intent.getIntExtra("m",3)
+        val n = intent.getIntExtra("n",3)
+        val k = intent.getIntExtra("k",3)
         val size = m * n
         val board = TicTacToeBoard(m, n, k)
 
@@ -237,7 +239,7 @@ class MainActivity : AppCompatActivity() {
                 forRow.height = heightBoard / m
                 newButton.setLayoutParams(forRow)
 //                newRow.backgroundTintMode = color
-                newButton.textSize = ((widthBoard / n)/5).toFloat()
+                newButton.textSize = ((widthBoard / n) / 5).toFloat()
                 newRow.addView(newButton)
                 listButton.add(newButton)
             }
@@ -258,7 +260,9 @@ class MainActivity : AppCompatActivity() {
 
 
         buttonRestart.setOnClickListener {
-            buttonsControl.restart()
+//            buttonsControl.restart()
+            finish()
+
         }
         buttonNextRound.setOnClickListener {
             buttonsControl.nextRound()
