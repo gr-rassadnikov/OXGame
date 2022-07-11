@@ -1,7 +1,9 @@
 package com.example.oxgame
 
+import android.content.res.Resources
 import android.graphics.Color
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.oxgame.game.Board
@@ -195,8 +197,8 @@ private class ButtonsControl(
     }
 }
 
-var widthBoard = 1020
-var heightBoard = 1020
+var widthBoard = Resources.getSystem().getDisplayMetrics().widthPixels * 0.95
+var heightBoard = Resources.getSystem().getDisplayMetrics().widthPixels * 0.95
 
 
 class GameActivity : StartActivity() {
@@ -205,9 +207,9 @@ class GameActivity : StartActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
-         val m = intent.getIntExtra("m",3)
-        val n = intent.getIntExtra("n",3)
-        val k = intent.getIntExtra("k",3)
+        val m = intent.getIntExtra("m", 3)
+        val n = intent.getIntExtra("n", 3)
+        val k = intent.getIntExtra("k", 3)
         val size = m * n
         val board = TicTacToeBoard(m, n, k)
 
@@ -235,11 +237,11 @@ class GameActivity : StartActivity() {
             val newRow: TableRow = TableRow(this)
             for (j in 0 until n) {
                 val newButton: Button = Button(this)
-                forRow.width = widthBoard / n
-                forRow.height = heightBoard / m
+                forRow.width = (widthBoard / n).toInt()
+                forRow.height = (heightBoard / m).toInt()
                 newButton.setLayoutParams(forRow)
 //                newRow.backgroundTintMode = color
-                newButton.textSize = ((widthBoard / n) / 5).toFloat()
+                newButton.textSize = ((widthBoard / n) / 6).toFloat()
                 newRow.addView(newButton)
                 listButton.add(newButton)
             }
